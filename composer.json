@@ -10,6 +10,11 @@
             "role": "Developer"
         }
     ],
+    "autoload": {
+      "psr-4": {
+        "TheBoy\\Kungfu\\": ["framework/", "application/"]}
+    },
+
     "require": {
         "monolog/monolog": "1.22.*"
     },
