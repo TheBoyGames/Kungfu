@@ -34,7 +34,7 @@ class Bootstrap
 
     private function __construct()
     {
-        $this->configuration = new Configuration();
+        $this->configuration = Configuration::init();
     }
 
 }
