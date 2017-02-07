@@ -11,3 +11,5 @@ include "../vendor/autoload.php";
 use TheBoy\Kungfu\Bootstrap;
 
 Bootstrap::init();
+
+$application->start();
