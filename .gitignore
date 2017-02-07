@@ -5,10 +5,5 @@ env.json
 .idea
 /vendor/
 assets
-application/
-composer.json
-framework/
-public/static/
-setting/
 /composer
 /phpunit
