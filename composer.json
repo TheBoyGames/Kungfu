@@ -1,0 +1,13 @@
+{
+    "name": "theboy/kungfu",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TheBoy",
+            "email": "theboy5140@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {}
+}
