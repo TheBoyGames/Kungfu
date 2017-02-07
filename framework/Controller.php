@@ -10,5 +10,4 @@ namespace  TheBoy\Kungfu;
 
 class Controller
 {
-sfsfd
 }
