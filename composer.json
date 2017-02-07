@@ -5,9 +5,19 @@
     "authors": [
         {
             "name": "TheBoy",
-            "email": "theboy5140@gmail.com"
+            "email": "theboy5140@gmail.com",
+            "homepage": "http://www.theboy.me",
+            "role": "Developer"
         }
     ],
-    "require": {},
-    "require-dev": {}
+    "require": {
+        "monolog/monolog": "1.22.*"
+    },
+    "require-dev": {},
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
 }
