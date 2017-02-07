@@ -16,15 +16,11 @@ class Bootstrap
     public static function init()
     {
         global $application;
-
         if(null == self::$instance)
         {
             self::$instance = new Bootstrap();
-            $application = self::$instance;
-        }else
-        {
-            $application = self::$instance;
         }
+        $application = self::$instance;
     }
 
     public function start()
@@ -32,9 +28,13 @@ class Bootstrap
         echo("serving now ");
     }
 
+    public function get($name)
+    {
+        return $this->configuration->get($name);
+    }
+
     private function __construct()
     {
         $this->configuration = Configuration::init();
     }
-
 }
