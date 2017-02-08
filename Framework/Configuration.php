@@ -16,7 +16,7 @@ class Configuration
 
     public static function init()
     {
-        if(null == self::$instance)
+        if(is_null(self::$instance))
         {
             self::$instance = new Configuration();
         }

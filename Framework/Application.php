@@ -25,7 +25,7 @@ class Application
      */
     public static function init()
     {
-        if(null == self::$instance)
+        if(is_null(self::$instance))
         {
             self::$instance = new Application();
         }
@@ -40,6 +40,9 @@ class Application
     public function start()
     {
         echo("start serving");
+        $container = Container::init();
+        $view = $container->make("view");
+        echo(var_dump($view->tesf()));
     }
 
     public function get($name)

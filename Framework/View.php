@@ -18,6 +18,11 @@ class View
 
     public function tesf()
     {
-
+        echo("fuck form view");
     }
+
+    public function __construct()
+    {
+    }
+
 }

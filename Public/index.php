@@ -14,4 +14,3 @@ Bootstrap::init();
 
 $application->start();
 
-echo(print_r($application->get('rootPath')));
