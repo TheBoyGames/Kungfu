@@ -11,40 +11,49 @@ namespace TheBoy\Kungfu;
 class Container
 {
     private static $instance;
-    private $objectStack;
+    private $singletonObjectStack;
     private $config;
 
-    public function make($name, $singleton = false)
+    public function make($name, $params=[], $singleton = false)
     {
         $reflector = null;
 
         if($singleton)
         {
-            if (array_key_exists($name, $this->objectStack))
+            if (array_key_exists($name, $this->singletonObjectStack))
             {
-                return $this->objectStack[$name];
+                return $this->singletonObjectStack[$name];
             }
         }
         $reflector = new \ReflectionClass($this->config[$name]);
 
-        return $this->build($reflector);
+        return $this->build($name, $reflector, $params, $singleton);
     }
 
-    public function build($reflector)
+    public function build($name, $reflector, $params, $singleton)
     {
         $constructor = $reflector->getConstructor();
+        $object = null;
 
         if(is_null($constructor))
         {
-
+            $object = new $reflector;
+        }
+        else
+        {
+            $object = $reflector->newInstanceArgs($params);
         }
 
-        return $reflector->newInstance();
+        if($singleton)
+        {
+            $this->singletonObjectStack[$name] = $object;
+        }
+        return $object;
     }
 
     public static function init()
     {
-        if(null == self::$instance)
+        if(is_null(self::$instance))
         {
             self::$instance = new Container();
         }
@@ -60,6 +69,6 @@ class Container
 
         $this->config = include($configPath);
 
-        $this->objectStack = [];
+        $this->singletonObjectStack = [];
     }
 }

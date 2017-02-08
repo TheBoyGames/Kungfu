@@ -41,8 +41,9 @@ class Application
     {
         echo("start serving");
         $container = Container::init();
-        $view = $container->make("view");
-        echo(var_dump($view->tesf()));
+        $view = $container->make("view", ['abc', 'sdf'], true);
+        $view2 = $container->make("view", ['abc', 'sdf'], true);
+        echo(var_dump($view == $view2));
     }
 
     public function get($name)

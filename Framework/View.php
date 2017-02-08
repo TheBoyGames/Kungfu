@@ -10,6 +10,7 @@ namespace TheBoy\Kungfu;
 
 class View
 {
+    private $name;
 
     public function te()
     {
@@ -18,11 +19,11 @@ class View
 
     public function tesf()
     {
-        echo("fuck form view");
+        echo($this->name);
     }
 
-    public function __construct()
+    public function __construct($name)
     {
+        $this->name = $name;
     }
-
 }
