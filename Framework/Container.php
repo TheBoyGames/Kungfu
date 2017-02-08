@@ -10,10 +10,36 @@ namespace TheBoy\Kungfu;
 
 class Container
 {
+
+    /**
+     * the current globally avaliable container (if any)
+     *
+     * @var static
+     */
     private static $instance;
+
+    /**
+     * the array buffered singleton object during the circle
+     *
+     * @var array
+     */
     private $singletonObjectStack;
+
+    /**
+     * the container mapping array
+     *
+     * @var array
+     */
     private $config;
 
+    /**
+     * call this method to init a object you need
+     *
+     * @param $name
+     * @param array $params
+     * @param bool $singleton
+     * @return mixed|null
+     */
     public function make($name, $params=[], $singleton = false)
     {
         $reflector = null;
@@ -30,6 +56,15 @@ class Container
         return $this->build($name, $reflector, $params, $singleton);
     }
 
+    /**
+     * this method decide how to create object, singleton or normal or anything else
+     *
+     * @param $name
+     * @param $reflector
+     * @param $params
+     * @param $singleton
+     * @return null
+     */
     public function build($name, $reflector, $params, $singleton)
     {
         $constructor = $reflector->getConstructor();
@@ -51,6 +86,12 @@ class Container
         return $object;
     }
 
+    /**
+     * Container cant control the creation of itself so you must
+     * make it singleton handly
+     *
+     * @return Container
+     */
     public static function init()
     {
         if(is_null(self::$instance))
@@ -61,7 +102,7 @@ class Container
     }
 
     /**
-     * Container constructor.
+     * Container constructor nothing serious.
      */
     private function __construct()
     {
