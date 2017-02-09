@@ -10,18 +10,13 @@ namespace TheBoy\Kungfu;
 
 class Configuration
 {
+
+    /**
+     * save the configuration key=>value
+     *
+     * @var array
+     */
     private $configBuffer = [];
-
-    private static $instance;
-
-    public static function init()
-    {
-        if(is_null(self::$instance))
-        {
-            self::$instance = new Configuration();
-        }
-        return self::$instance;
-    }
 
     public function get($config)
     {
@@ -33,7 +28,7 @@ class Configuration
         $this->configBuffer[$name] = $value;
     }
 
-    private function __construct()
+    public function __construct()
     {
         $this->configBuffer['DEBUG'] = false;
         $this->setPath();
@@ -41,6 +36,12 @@ class Configuration
         $this->loadConfigFile();
     }
 
+
+    /**
+     * set the proper path for app root and framework root
+     *
+     * @return null
+     */
     private function setPath()
     {
         $path = ".." . DIRECTORY_SEPARATOR;
@@ -51,6 +52,12 @@ class Configuration
         $this->configBuffer['envFilePath'] = $realpath . DIRECTORY_SEPARATOR . "env.json";
     }
 
+
+    /**
+     * read json env file from env.json
+     *
+     * @return null
+     */
     private function loadEnvFile()
     {
         $envFile = file_get_contents($this->configBuffer['envFilePath']);
@@ -61,6 +68,13 @@ class Configuration
         }
     }
 
+
+    /**
+     * depends on how you define the config in env.json, default this function will load default.
+     * php in config directory to configBuffer variable
+     *
+     * @return null
+     */
     private function loadConfigFile()
     {
         $config = "default";

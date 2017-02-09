@@ -15,6 +15,7 @@ class Application
      */
     private static $instance;
 
+    private $container;
     /**
      * @var Configuration instance to get access to config value
      */
@@ -43,7 +44,7 @@ class Application
         $container = Container::init();
         $view = $container->make("view", ['abc', 'sdf'], true);
         $view2 = $container->make("view", ['abc', 'sdf'], true);
-        echo(var_dump($view == $view2));
+        echo($this->get('DB_HOST'));
     }
 
     public function get($name)
@@ -56,6 +57,7 @@ class Application
      */
     private function __construct()
     {
-        $this->configuration = Configuration::init();
+        $this->container = Container::init();
+        $this->configuration = $this->container->make('configuration', [], true);
     }
 }
