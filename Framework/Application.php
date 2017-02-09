@@ -6,7 +6,7 @@
  * DATE : 2017/2/8 14:06
  */
 
-namespace TheBoy\Kungfu;
+namespace Kungfu;
 
 class Application
 {
@@ -40,11 +40,16 @@ class Application
      */
     public function start()
     {
-        echo("start serving");
-        $container = Container::init();
-        $view = $container->make("view", ['abc', 'sdf'], true);
-        $view2 = $container->make("view", ['abc', 'sdf'], true);
-        echo($this->get('DB_HOST'));
+//        $request = $this->make('request');
+//
+//        $response = $this->make('response', [$request]);
+//
+//        echo($response);
+    }
+
+    public function make($name, $params = [], $singleton = false)
+    {
+        return $this->container->make($name, $params, $singleton);
     }
 
     public function get($name)

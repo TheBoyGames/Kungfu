@@ -6,9 +6,16 @@
  * DATE : 2017/2/7 16:22
  */
 
-namespace TheBoy\Kungfu;
+namespace Kungfu;
 
-class Configuration
+interface ConfigurationInterface
+{
+    public function set($name, $value);
+
+    public function get($name);
+}
+
+class Configuration implements ConfigurationInterface
 {
 
     /**
@@ -36,7 +43,6 @@ class Configuration
         $this->loadConfigFile();
     }
 
-
     /**
      * set the proper path for app root and framework root
      *
@@ -52,7 +58,6 @@ class Configuration
         $this->configBuffer['envFilePath'] = $realpath . DIRECTORY_SEPARATOR . "env.json";
     }
 
-
     /**
      * read json env file from env.json
      *
@@ -67,7 +72,6 @@ class Configuration
             $this->configBuffer = array_merge($this->configBuffer, $env);
         }
     }
-
 
     /**
      * depends on how you define the config in env.json, default this function will load default.

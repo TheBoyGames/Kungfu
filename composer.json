@@ -12,9 +12,10 @@
     ],
     "autoload": {
       "psr-4": {
-        "TheBoy\\Kungfu\\": ["framework/", "application/"]}
+        "Kungfu\\" : "Framework/",
+        "Application\\" : "Application/"
+      }
     },
-
     "require": {
         "monolog/monolog": "1.22.*"
     },

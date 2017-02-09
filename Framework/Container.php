@@ -6,11 +6,10 @@
  * DATE : 2017/2/7 16:00
  */
 
-namespace TheBoy\Kungfu;
+namespace Kungfu;
 
 class Container
 {
-
     /**
      * the current globally avaliable container (if any)
      *

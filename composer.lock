@@ -735,16 +735,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.0.5",
+            "version": "6.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1fb01cbd5aa7fa2457cc10170070676a9ad315d2"
+                "reference": "e702506af102d0dc5312dd24b8e97fd6e58ce3ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/1fb01cbd5aa7fa2457cc10170070676a9ad315d2.zip",
-                "reference": "1fb01cbd5aa7fa2457cc10170070676a9ad315d2",
+                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/e702506af102d0dc5312dd24b8e97fd6e58ce3ba.zip",
+                "reference": "e702506af102d0dc5312dd24b8e97fd6e58ce3ba",
                 "shasum": ""
             },
             "require": {
@@ -813,7 +813,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-05T15:33:43+00:00"
+            "time": "2017-02-08T05:57:26+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

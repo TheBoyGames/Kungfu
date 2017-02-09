@@ -6,7 +6,7 @@
  * DATE : 2017/2/7 16:20
  */
 
-namespace  TheBoy\Kungfu;
+namespace Kungfu;
 
 class Translate
 {

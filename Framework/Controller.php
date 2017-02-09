@@ -6,8 +6,14 @@
  * DATE : 2017/2/7 15:30
  */
 
-namespace  TheBoy\Kungfu;
+namespace Kungfu;
 
-class Controller
+interface ControllerInterface
 {
+
+}
+
+class Controller implements ControllerInterface
+{
+
 }

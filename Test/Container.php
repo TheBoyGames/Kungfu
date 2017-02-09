@@ -20,3 +20,4 @@ class Person
 }
 
 $person = $application->make('Person');
+

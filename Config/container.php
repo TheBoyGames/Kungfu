@@ -7,5 +7,5 @@
  */
 
 return [
-    'configuration' => \TheBoy\Kungfu\Configuration::class,
-    'view' => \TheBoy\Kungfu\View::class];
+    'configuration' => Kungfu\Configuration::class,
+    'view' => Kungfu\View::class];

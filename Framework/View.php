@@ -6,7 +6,7 @@
  * DATE : 2017/2/7 15:49
  */
 
-namespace TheBoy\Kungfu;
+namespace Kungfu;
 
 class View
 {

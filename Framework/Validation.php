@@ -6,7 +6,7 @@
  * DATE : 2017/2/7 20:39
  */
 
-namespace TheBoy\Kungfu;
+namespace Kungfu;
 
 class Validation
 {
