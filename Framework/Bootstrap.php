@@ -8,6 +8,15 @@
 
 namespace Kungfu;
 
+if(!function_exists("includeIfExists"))
+{
+    function includeIfExists($file)
+    {
+        return file_exists($file) ? include $file : false;
+    }
+}
+
+
 class Bootstrap
 {
     public static function init()

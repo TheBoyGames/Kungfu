@@ -8,14 +8,7 @@
 
 namespace Kungfu;
 
-interface ConfigurationInterface
-{
-    public function set($name, $value);
-
-    public function get($name);
-}
-
-class Configuration implements ConfigurationInterface
+class Configuration
 {
 
     /**
@@ -37,10 +30,11 @@ class Configuration implements ConfigurationInterface
 
     public function __construct()
     {
-        $this->configBuffer['DEBUG'] = false;
+        $this->configBuffer["DEBUG"] = false;
         $this->setPath();
         $this->loadEnvFile();
         $this->loadConfigFile();
+        $this->laodRouterFile();
     }
 
     /**
@@ -52,10 +46,11 @@ class Configuration implements ConfigurationInterface
     {
         $path = ".." . DIRECTORY_SEPARATOR;
         $realpath = realpath($path);
-        $this->configBuffer['rootPath'] = $realpath . DIRECTORY_SEPARATOR;
-        $this->configBuffer['applicationPath'] = $realpath . DIRECTORY_SEPARATOR . "application" . DIRECTORY_SEPARATOR;
-        $this->configBuffer['frameworkPath'] = $realpath . DIRECTORY_SEPARATOR . "framework" . DIRECTORY_SEPARATOR;
-        $this->configBuffer['envFilePath'] = $realpath . DIRECTORY_SEPARATOR . "env.json";
+        $this->configBuffer["rootPath"] = $realpath . DIRECTORY_SEPARATOR;
+        $this->configBuffer["applicationPath"] = $realpath . DIRECTORY_SEPARATOR . "application" . DIRECTORY_SEPARATOR;
+        $this->configBuffer["frameworkPath"] = $realpath . DIRECTORY_SEPARATOR . "framework" . DIRECTORY_SEPARATOR;
+        $this->configBuffer["envFilePath"] = $realpath . DIRECTORY_SEPARATOR . "env.json";
+        $this->configBuffer["configPath"] = $this->configBuffer["rootPath"] . "config" . DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -67,7 +62,7 @@ class Configuration implements ConfigurationInterface
     {
         $envFile = file_get_contents($this->configBuffer['envFilePath']);
         $env = json_decode($envFile, true);
-        if($env)
+        if(is_null($env))
         {
             $this->configBuffer = array_merge($this->configBuffer, $env);
         }
@@ -82,14 +77,31 @@ class Configuration implements ConfigurationInterface
     private function loadConfigFile()
     {
         $config = "default";
-        if($this->configBuffer['CONFIG'])
+        if(array_key_exists('CONFIG', $this->configBuffer))
         {
-            $config = $this->configBuffer['CONFIG'];
+            $config = $this->configBuffer["CONFIG"];
         }
-        $config = include($this->configBuffer["rootPath"] . "config" . DIRECTORY_SEPARATOR . $config . ".php");
-        if($config)
+        $configArray = includeIfExists($this->configBuffer["configPath"] . $config . ".php");
+
+        if(!is_null($configArray))
         {
-            $this->configBuffer = array_merge($this->configBuffer, $config);
+            $this->configBuffer = array_merge($this->configBuffer, $configArray);
+        }
+    }
+
+    private function laodRouterFile()
+    {
+        $router = 'router';
+
+        if(array_key_exists('ROUTER', $this->configBuffer))
+        {
+            $router = $this->configBuffer["ROUTER"];
+        }
+        $routerArray = includeIfExists($this->configBuffer["configPath"] . $router . ".php");
+
+        if(!is_null($routerArray))
+        {
+            $this->configBuffer["router"] = $routerArray;
         }
     }
 }

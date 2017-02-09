@@ -1,12 +1,12 @@
 {
-    "name": "theboy/kungfu",
+    "name": "kungfu",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "TheBoy",
             "email": "theboy5140@gmail.com",
-            "homepage": "http://www.theboy.me",
+            "homepage": "http://www.theboy.io",
             "role": "Developer"
         }
     ],
